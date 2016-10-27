@@ -22,8 +22,8 @@
     "contextMenus",
     "tabs",
     "storage",
-    "https://github.com/*",
-    "https://www.google.se/*"
+    "https://*/*",
+    "http://*/*"
   ],
   "content_security_policy": "default-src 'self'; script-src 'self'; style-src * 'unsafe-inline'; img-src 'self' data:;"
 }

@@ -17,7 +17,7 @@ export default class ShowDiff extends Component {
     } else {
       let diffText = this.props.diff.slice(0, 20).map((part, index) => {
         let style = diffPartHelper.getStyle(part);
-        let value = diffPartHelper.getValue(part);
+        let value = diffPartHelper.getValue(part, index, this.props.diff.length);
         
         return <span style={style}>{value}</span>
       });
