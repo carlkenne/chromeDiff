@@ -1,11 +1,14 @@
+var callback;
+
 chrome.runtime.onMessage.addListener(function(request, sender) {
     if (request.action == "getSource") {
-        console.log(request.source);
+        callback(request.source);
     }
 });
 
 export default { 
-    fetch: () => {
+    fetch: (cb) => {
+        callback = cb;
         chrome.tabs.executeScript(null, {
             file: "./static/getPageSourceInjected.js"
         }, function() {

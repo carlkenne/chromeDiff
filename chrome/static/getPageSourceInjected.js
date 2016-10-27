@@ -25,7 +25,7 @@ function DOMtoString(document_root) {
         }
         node = node.nextSibling;
     }
-    return html;
+    return {html:html, href:location.href};
 }
 
 chrome.runtime.sendMessage({

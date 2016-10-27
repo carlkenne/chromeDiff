@@ -1,6 +1,5 @@
-export const ADD_TODO = 'ADD_TODO';
-export const DELETE_TODO = 'DELETE_TODO';
-export const EDIT_TODO = 'EDIT_TODO';
-export const COMPLETE_TODO = 'COMPLETE_TODO';
-export const COMPLETE_ALL = 'COMPLETE_ALL';
-export const CLEAR_COMPLETED = 'CLEAR_COMPLETED';
+export const TAKE_SNAPSHOT = 'TAKE_SNAPSHOT';
+export const RECEIVE_SNAPSHOT = 'RECEIVE_SNAPSHOT';
+export const SET_BASELINE = 'SET_BASELINE';
+export const RECEIVE_BASELINE = 'RECEIVE_BASELINE';
+export const DO_DIFF = 'DO_DIFF';

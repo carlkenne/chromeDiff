@@ -1,0 +1,12 @@
+.baselineButton {
+  background: tan;
+  margin-top: 20px;
+  color: white;
+  padding: 5px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.baselineInfo {
+  margin-left: 10px;
+}

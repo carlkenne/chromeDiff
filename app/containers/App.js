@@ -2,34 +2,50 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import MainSection from '../components/MainSection';
-import GetHTML from '../components/GetHTML';
-import * as TodoActions from '../actions/todos';
+import TakeSnapshotButton from '../components/TakeSnapshotButton';
+import SetBaselineButton from '../components/SetBaselineButton';
+import ShowDiff from '../components/ShowDiff';
+import * as DiffActions from '../actions/diffs';
 import style from './App.css';
 
 @connect(
   state => ({
-    todos: state.todos
+    diffs: state.diffs
   }),
   dispatch => ({
-    actions: bindActionCreators(TodoActions, dispatch)
+    actions: bindActionCreators(DiffActions, dispatch)
   })
 )
 export default class App extends Component {
 
   static propTypes = {
-    todos: PropTypes.array.isRequired,
+    diffs: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired
   };
 
   render() {
-    const { todos, actions } = this.props;
+    const { diffs, actions } = this.props;
+    const showDiff = typeof diffs.diff !== 'undefined';
 
     return (
       <div className={style.normal}>
         <Header addTodo={actions.addTodo} />
-        <MainSection todos={todos} actions={actions} />
-        <GetHTML />
+        <SetBaselineButton
+          fetchBaseline={actions.fetchBaseline}
+          hasBaseline={diffs.hasBaseline}
+          baselineMeta={diffs.baselineMeta}
+          />
+        <TakeSnapshotButton
+          fetchSnapshot={actions.fetchSnapshot}
+          hasBaseline={diffs.hasBaseline}
+          />
+        {showDiff && 
+          <ShowDiff
+            snapshot={diffs.snapshot}
+            baseline={diffs.baseline}
+            diff={diffs.diff}
+            />
+        }
       </div>
     );
   }
